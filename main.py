@@ -80,7 +80,7 @@ class LetterDance:
         for letter in self.letters:
             if letter == " ":
                 continue
-
+            letter = letter.replace("?", "qm")
             path = os.path.join("img", letter + ".gif")
 
             frame_count = self.get_frame_count(path)
@@ -122,7 +122,9 @@ class LetterDance:
                     if letter == " ":
                         x_offset += max_width
                         continue
-
+                    if letter == "?":
+                       letter = "qm"
+                        
                     gif = imageio.get_reader(os.path.join("img", letter + ".gif"))
                     frame = gif.get_data(i)
 
